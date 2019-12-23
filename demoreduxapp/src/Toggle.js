@@ -1,13 +1,23 @@
 import React, { PureComponent } from 'react'
+import {connect} from 'react-redux'
 
-export default class Toggle extends PureComponent {
-    render() {
-        console.log("inside Toggle render");
-        return (
-            <div>
-                <button onClick={this.props.toggleHandler}>Tooglle</button>
-                {this.props.toggle && <h1>Hello Rendered</h1>}
-            </div>
-        )
-    }
+
+const Toggle = (props)=>{
+    console.log("toggle props" ,props)
+    return(
+        <div>
+           {props.messageVisibility &&  <h1>Show/hide h1</h1>}
+            <button onClick={()=>props.dispatch({
+                type : 'TOGGLE'
+            })}>Toggle</button>
+        </div>
+    )
 }
+
+const mapStateToProps = state =>({
+        messageVisibility : state.ToggleReducer.messageVisibility 
+})
+
+
+export default connect(mapStateToProps, null)(Toggle)
+// export default Toggle
