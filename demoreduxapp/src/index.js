@@ -3,11 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import {createStore} from 'redux'
+import {createStore , applyMiddleware} from 'redux'
 import {Provider} from 'react-redux'
 import {rootReducer} from './rootReducer.js'
 import { composeWithDevTools } from 'redux-devtools-extension';
 import {BrowserRouter as Router } from 'react-router-dom'
+import thunk from 'redux-thunk'
 //what is store ?
 // how to create store = createStore 
 //createStore accepts reducer fn as an argument 
@@ -15,7 +16,7 @@ import {BrowserRouter as Router } from 'react-router-dom'
 const store = createStore(
      rootReducer,
      {},
-     composeWithDevTools()
+     composeWithDevTools(applyMiddleware(thunk))
     )
 
 
@@ -111,3 +112,8 @@ serviceWorker.unregister();
 // })
 
 // console.log(store.getState())
+
+// store.dispatch({
+//     type :'GET_MOVIES,
+//     payload : 'apidata'
+// })
