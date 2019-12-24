@@ -1,16 +1,19 @@
 import React from 'react';
-import logo from './logo.svg';
-import Toggle from './Toggle'
-import './App.css';
-import CounterRedux from './CounterRedux'
+import MoviesDetail from './Movies/MoviesDetail'
+import MoviesList from './Movies/MoviesList'
+import {Route, Switch} from 'react-router-dom'
 class App extends React.Component{
 
   render(){
     return(
       <div>
-          <Toggle/>
-          <hr/>
-          <CounterRedux/>
+        <Switch>
+        <Route exact path='/' component={MoviesList}/> 
+
+        <Route path='/:id' component={MoviesDetail} />
+
+        </Switch>
+        
       </div>
     )
   }

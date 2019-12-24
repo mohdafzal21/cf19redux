@@ -7,6 +7,7 @@ import {createStore} from 'redux'
 import {Provider} from 'react-redux'
 import {rootReducer} from './rootReducer.js'
 import { composeWithDevTools } from 'redux-devtools-extension';
+import {BrowserRouter as Router } from 'react-router-dom'
 //what is store ?
 // how to create store = createStore 
 //createStore accepts reducer fn as an argument 
@@ -22,7 +23,9 @@ const store = createStore(
 // Provider accepts store as a props 
 ReactDOM.render(
 <Provider store={store}>
-<App />
+    <Router>
+        <App />
+    </Router>
 </Provider>
 , document.getElementById('root'));
 

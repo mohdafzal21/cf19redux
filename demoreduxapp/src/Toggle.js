@@ -1,15 +1,13 @@
 import React, { PureComponent } from 'react'
 import {connect} from 'react-redux'
-
+import {toggleMessage} from './action.js'
 
 const Toggle = (props)=>{
     console.log("toggle props" ,props)
     return(
         <div>
            {props.messageVisibility &&  <h1>Show h1</h1>}
-            <button onClick={()=>props.dispatch({
-                type : 'TOGGLE'
-            })}>Toggle</button>
+            <button onClick={()=>props.toggleMessage()}>Toggle</button>
         </div>
     )
 }
@@ -19,7 +17,7 @@ const mapStateToProps = state =>({
 })
 
 
-export default connect(mapStateToProps, null)(Toggle)
+export default connect(mapStateToProps, {toggleMessage})(Toggle)
 // export default Toggle
 
 //connect - it connects the react component to the state in redux store 
