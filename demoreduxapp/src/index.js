@@ -9,11 +9,12 @@ import {rootReducer} from './rootReducer.js'
 import { composeWithDevTools } from 'redux-devtools-extension';
 //what is store ?
 // how to create store = createStore 
+//createStore accepts reducer fn as an argument 
+
 const store = createStore(
-    
-        rootReducer,
-        composeWithDevTools()
-    
+     rootReducer,
+     {},
+     composeWithDevTools()
     )
 
 
